@@ -1,0 +1,25 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+
+#Configure bridge and give it a static ip
+auto br0
+# iface br0 inet dhcp
+#    bridge_ports enp7s0
+iface br0 inet static
+        address 10.10.10.22
+        netmask 255.255.255.0
+        network 10.10.10.1
+        broadcast 10.10.10.255
+        gateway 10.10.10.1
+        bridge_ports enp7s0
+        bridge_stp off
+        bridge_fd 0
+        bridge_maxwait 0
+        dns-nameservers 1.1.1.1 1.0.0.1
